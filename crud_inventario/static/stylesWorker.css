@@ -1,0 +1,82 @@
+/* Fondo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(245, 238, 221);
+    text-align: center;
+    padding: 20px;
+}
+.custom-btn {
+    border-radius: 10px;
+    background-color: rgb(226, 114, 91);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+.custom-btn:hover {
+    background-color: rgb(193, 97, 78);
+}
+.table-container {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: rgb(226, 114, 91);
+    color: white;
+}
+.btnEliminar {
+    background-color: rgb(193, 97, 78);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btnEliminar:hover {
+    background-color: rgb(170, 80, 65);
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.form-row .form-group {
+    flex: 1;
+}

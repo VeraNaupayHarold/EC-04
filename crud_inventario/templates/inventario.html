@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD de Inventario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesWorker.css') }}">
+</head>
+<body>
+
+    <h2>Gestión de Inventario</h2>
+
+    <div class="table-container" style="display: block;">
+        <form id="formProducto" method="POST" action="/agregar">
+            <input type="hidden" name="id" id="id">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="producto">Producto</label>
+                    <input type="text" name="producto" id="producto" required>
+                </div>
+                <div class="form-group">
+                    <label for="cantidad">Cantidad</label>
+                    <input type="number" name="cantidad" id="cantidad" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" name="precio" id="precio" step="0.01" required>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button type="button" class="custom-btn" onclick="nuevoProducto()">Nuevo</button>
+                <button type="submit" class="custom-btn" id="btnGuardar">Guardar</button>
+            </div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in productos %}
+                <tr>
+                    <td>{{ item.producto }}</td>
+                    <td>{{ item.cantidad }}</td>
+                    <td>{{ item.precio }}</td>
+                    <td>
+                        <button class="custom-btn" onclick="editarProducto('{{ item.id }}', '{{ item.producto }}', '{{ item.cantidad }}', '{{ item.precio }}')">Editar</button>
+                        <a href="/eliminar/{{ item.id }}" class="btnEliminar" onclick="return confirm('¿Estás seguro de eliminar este producto?')">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function editarProducto(id, producto, cantidad, precio) {
+            document.getElementById('id').value = id;
+            document.getElementById('producto').value = producto;
+            document.getElementById('cantidad').value = cantidad;
+            document.getElementById('precio').value = precio;
+            document.getElementById('formProducto').action = '/actualizar';
+            document.getElementById('btnGuardar').innerText = 'Actualizar';
+        }
+
+        function nuevoProducto() {
+            document.getElementById('id').value = '';
+            document.getElementById('producto').value = '';
+            document.getElementById('cantidad').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('formProducto').action = '/agregar';
+            document.getElementById('btnGuardar').innerText = 'Guardar';
+        }
+    </script>
+
+</body>
+</html>
